@@ -26,7 +26,7 @@ class randRatesGenerator
       throw new Exception("Average rate can't be greater than max rate or less than 1.");
     }
 
-    $rate = rand($this->_detectMinRate(), $this->_detectMaxRate());
+    $rate = $this->_ratesCount == 1 ? $this->_ratesSum : rand($this->_detectMinRate(), $this->_detectMaxRate());
     $this->_rates[] = $rate;
     return $this->generateRandRates(--$this->_ratesCount, $this->_ratesSum - $rate);
   }
